@@ -19,7 +19,7 @@
 
     <properties>
         <!-- FIXME Fill in these properties - they need to be lowercase -->
-        <yourteam>shaun</yourteam>
+        <yourteam>ywyz</yourteam>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -30,7 +30,7 @@
             <id>github</id>
             <name>GitHub Packages</name>
             <!-- FIXME Fill in these properties -->
-            <url>https://maven.pkg.github.com/YOUR_GITHUB_USERNAME/YOUR_PROJECT_NAME</url>
+            <url>https://maven.pkg.github.com/RachellLiu/ConnectMasterYi-square</url>
         </repository>
     </distributionManagement>
 
