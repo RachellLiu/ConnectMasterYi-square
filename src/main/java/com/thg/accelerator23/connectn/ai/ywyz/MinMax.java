@@ -29,7 +29,7 @@ public class MinMax {
         GameState gameState = boardAnalyser.calculateGameState(minimaxState.getBoard());
         if (gameState.isEnd() || depth == maxDepth) {
             CalculatedMove baseMove = new CalculatedMove();
-            baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter.getOther()));
+            baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter, depth));
             return baseMove;
         } else {
             LinkedList<MinimaxState> children = minimaxState.getChildren(counter.getOther());
@@ -50,7 +50,7 @@ public class MinMax {
                     }
                 }
             }
-            System.out.println("minPlayerMoveFound:  "+ minPlayerMove.getCol());
+//            System.out.println("minPlayerMoveFound:  "+ minPlayerMove.getCol());
             return minPlayerMove;
         }
     }
@@ -61,7 +61,7 @@ public class MinMax {
         GameState gameState = boardAnalyser.calculateGameState(minimaxState.getBoard());
         if (gameState.isEnd() || depth == maxDepth) {
             CalculatedMove baseMove = new CalculatedMove();
-            baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter));
+            baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter, depth));
             return baseMove;
         } else {
             LinkedList<MinimaxState> children = minimaxState.getChildren(counter);
@@ -82,7 +82,7 @@ public class MinMax {
                     }
                 }
             }
-            System.out.println("maxPlayerMoveFound:  "+ maxPlayerMove.getCol());
+//            System.out.println("maxPlayerMoveFound:  "+ maxPlayerMove.getCol());
             return maxPlayerMove;
         }
     }
