@@ -3,11 +3,15 @@ package com.thg.accelerator23.connectn.ai.ywyz.minimax;
 import com.thehutgroup.accelerator.connectn.player.Board;
 import com.thehutgroup.accelerator.connectn.player.Counter;
 import com.thehutgroup.accelerator.connectn.player.Player;
+import com.thehutgroup.accelerator.connectn.player.Position;
 
+import java.util.Base64;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class ConnectMasterYiSquare extends Player {
+
+  boolean isEmpty = true;
   public ConnectMasterYiSquare(Counter counter) {
     //TODO: fill in your name here
     super(counter, ConnectMasterYiSquare.class.getName());
@@ -22,5 +26,16 @@ public class ConnectMasterYiSquare extends Player {
     MinMax ai = new MinMax(4, getCounter());
     MinimaxState thisState = new MinimaxState(board, 1,0);
     return ai.decision(thisState);
+  }
+
+  public boolean isEmptyBoard(Board board){
+    for (int i = 0; i < board.getConfig().getWidth(); i++){
+      for (int j = 0; j < board.getConfig().getHeight(); j++){
+        if (board.getCounterAtPosition(new Position(i, j)) == null ){
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }

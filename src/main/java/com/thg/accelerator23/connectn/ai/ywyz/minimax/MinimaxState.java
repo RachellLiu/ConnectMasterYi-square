@@ -18,8 +18,8 @@ public class MinimaxState {
     }
     public LinkedList<MinimaxState> getChildren(Counter counter) {
         LinkedList<MinimaxState> children = new LinkedList<>();
-        int col = 1;
-        while (col < 11) {
+        int col = 0;
+        while (col < 10) {
             try {
                 Board newBoard = new Board(board, col, counter);
                 MinimaxState child = new MinimaxState(newBoard, col, utilityValue);

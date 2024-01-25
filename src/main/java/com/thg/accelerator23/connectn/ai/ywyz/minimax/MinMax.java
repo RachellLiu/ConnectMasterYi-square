@@ -6,7 +6,9 @@ import com.thehutgroup.accelerator.connectn.player.GameConfig;
 import com.thg.accelerator23.connectn.ai.ywyz.analysis.BoardAnalyser;
 import com.thg.accelerator23.connectn.ai.ywyz.analysis.GameState;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 import static com.thg.accelerator23.connectn.ai.ywyz.minimax.UtilityFunction.utilityFunction;
@@ -22,6 +24,16 @@ public class MinMax {
 
     public int decision(MinimaxState minimaxState) {
         return max(minimaxState, 0).getCol();
+    }
+
+    public int getLastMove(int decision){
+        List<Integer> lastMove = new ArrayList<>();
+        lastMove.add(decision);
+        if (lastMove.size() == 1){
+            return 1;
+        } else {
+            return lastMove.removeFirst();
+        }
     }
 
     public CalculatedMove min(MinimaxState minimaxState, int depth) {
