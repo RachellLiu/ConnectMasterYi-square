@@ -19,7 +19,7 @@ public class ConnectMasterYiSquare extends Player {
     //TODO: make sure said analysis uses less than 2G of heap and returns within 10 seconds on whichever machine is running it
 //    int randomNum = ThreadLocalRandom.current().nextInt(1, 11);
 //    return randomNum;
-    MinMax ai = new MinMax(2, getCounter());
+    MinMax ai = new MinMax(5, getCounter());
     MinimaxState thisState = new MinimaxState(board, 1,0);
     return ai.decision(thisState);
   }
