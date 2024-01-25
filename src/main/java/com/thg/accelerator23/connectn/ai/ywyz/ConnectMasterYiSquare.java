@@ -1,10 +1,8 @@
-package com.thg.accelerator23.connectn.ai.ywyz.minimax;
+package com.thg.accelerator23.connectn.ai.ywyz;
 
 import com.thehutgroup.accelerator.connectn.player.Board;
 import com.thehutgroup.accelerator.connectn.player.Counter;
 import com.thehutgroup.accelerator.connectn.player.Player;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class ConnectMasterYiSquare extends Player {
@@ -20,7 +18,7 @@ public class ConnectMasterYiSquare extends Player {
 //    int randomNum = ThreadLocalRandom.current().nextInt(1, 11);
 //    return randomNum;
     MinMax ai = new MinMax(4, getCounter());
-    MinimaxState thisState = new MinimaxState(board, 1,0);
+    MinimaxState thisState = new MinimaxState(board, -1,0);
     return ai.decision(thisState);
   }
 }
