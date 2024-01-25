@@ -24,7 +24,7 @@ public class MinMax {
     }
 
     public CalculatedMove min(MinimaxState minimaxState, int depth) {
-//        Random random = new Random();
+        Random random = new Random();
         BoardAnalyser boardAnalyser = new BoardAnalyser(new GameConfig(10, 8, 4));
         GameState gameState = boardAnalyser.calculateGameState(minimaxState.getBoard());
         if (gameState.isEnd() || depth == maxDepth) {
@@ -40,15 +40,15 @@ public class MinMax {
                 MinimaxState child = children.get(i);
                 CalculatedMove nextMove = max(child, depth + 1);
                 if (nextMove.getUtilityValue() <= minPlayerMove.getUtilityValue()) {
-//                    if (nextMove.getUtilityValue() == minPlayerMove.getUtilityValue()) {
-//                        if (random.nextInt(2) == 0) {
-//                            minPlayerMove.setCol(child.getLastMove());
-//                            minPlayerMove.setUtilityValue(nextMove.getUtilityValue());
-//                        }
-//                    } else {
+                    if (nextMove.getUtilityValue() == minPlayerMove.getUtilityValue()) {
+                        if (random.nextInt(2) == 0) {
+                            minPlayerMove.setCol(child.getLastMove());
+                            minPlayerMove.setUtilityValue(nextMove.getUtilityValue());
+                        }
+                    } else {
                         minPlayerMove.setCol(child.getLastMove());
                         minPlayerMove.setUtilityValue(nextMove.getUtilityValue());
-//                    }
+                    }
                 }
             }
             System.out.println("minPlayerMoveFound:  "+ minPlayerMove.getCol());
@@ -57,7 +57,7 @@ public class MinMax {
     }
 
     public CalculatedMove max(MinimaxState minimaxState, int depth) {
-//        Random random = new Random();
+        Random random = new Random();
         BoardAnalyser boardAnalyser = new BoardAnalyser(new GameConfig(10, 8, 4));
         GameState gameState = boardAnalyser.calculateGameState(minimaxState.getBoard());
         if (gameState.isEnd() || depth == maxDepth) {
@@ -73,15 +73,15 @@ public class MinMax {
                 MinimaxState child = children.get(j);
                 CalculatedMove nextMove = min(child, depth + 1);
                 if (nextMove.getUtilityValue() >= maxPlayerMove.getUtilityValue()) {
-//                    if (nextMove.getUtilityValue() == maxPlayerMove.getUtilityValue()) {
-//                        if (random.nextInt(2) == 0) {
-//                            maxPlayerMove.setCol(child.getLastMove());
-//                            maxPlayerMove.setUtilityValue(newMove.getUtilityValue());
-//                        }
-//                    } else {
+                    if (nextMove.getUtilityValue() == maxPlayerMove.getUtilityValue()) {
+                        if (random.nextInt(2) == 0) {
+                            maxPlayerMove.setCol(child.getLastMove());
+                            maxPlayerMove.setUtilityValue(nextMove.getUtilityValue());
+                        }
+                    } else {
                         maxPlayerMove.setCol(child.getLastMove());
                         maxPlayerMove.setUtilityValue(nextMove.getUtilityValue());
-//                    }
+                    }
                 }
             }
             System.out.println("maxPlayerMoveFound:  "+ maxPlayerMove.getCol());
