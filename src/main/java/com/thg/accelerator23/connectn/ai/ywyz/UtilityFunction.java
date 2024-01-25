@@ -1,4 +1,4 @@
-package com.thg.accelerator23.connectn.ai.ywyz.minimax;
+package com.thg.accelerator23.connectn.ai.ywyz;
 
 import com.thehutgroup.accelerator.connectn.player.Board;
 import com.thehutgroup.accelerator.connectn.player.Counter;

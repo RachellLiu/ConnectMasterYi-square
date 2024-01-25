@@ -1,4 +1,4 @@
-package com.thg.accelerator23.connectn.ai.ywyz.minimax;
+package com.thg.accelerator23.connectn.ai.ywyz;
 
 public class CalculatedMove {
     private int col;
