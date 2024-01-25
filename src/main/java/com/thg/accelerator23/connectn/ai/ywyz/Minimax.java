@@ -21,7 +21,7 @@ public class Minimax {
         this.gameState = gameState;
     }
 
-    private int minimaxAlgo(int depth, Counter currentCounter) {
+    public int minimaxAlgo(int depth, Counter currentCounter) throws InvalidMoveException {
         List<Integer> choices = legalMoves();
         Counter winner = gameState.getWinner();
 
@@ -39,10 +39,14 @@ public class Minimax {
         for (int i=0; i < choices.size(); i++){
             int position = choices.get(i);
             if (currentCounter == Counter.X){
-                gameBoard.
+                Board newBoard = new Board(gameBoard, position, currentCounter);
+            } else {
+                Board newBoard = new Board(gameBoard, position, currentCounter.getOther());
             }
+            scores[i] = minimaxAlgo(depth-1, currentCounter.getOther());
         }
-
+        // if current player is current counter then return max else return min
+        if ()
     }
 
     private int getMax(int[] scores){
@@ -82,12 +86,14 @@ public class Minimax {
                 .allMatch(row -> board.hasCounterAtPosition(new Position(columnIndex, row)));
     }
 
+    // place counter in position
     private void placeCounter(Counter counter, int columnIndex) throws InvalidMoveException {
         if (!gameBoard.isWithinBoard(new Position(columnIndex, 0))){
             throw new InvalidMoveException("Outside of board");
         }
 
-        int columnIndex = gameBoard.
+//        int columnIndex = gameBoard.
+
     }
 
     private void undoCounterPlacement(int columnIndex) {
