@@ -29,8 +29,7 @@ public class MinMax {
         GameState gameState = boardAnalyser.calculateGameState(minimaxState.getBoard());
         if (gameState.isEnd() || depth == maxDepth) {
             CalculatedMove baseMove = new CalculatedMove();
-            baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter));
-            System.out.println("final baseMoveFound:  "+ baseMove.getCol());
+            baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter.getOther()));
             return baseMove;
         } else {
             LinkedList<MinimaxState> children = minimaxState.getChildren(counter.getOther());
@@ -63,7 +62,6 @@ public class MinMax {
         if (gameState.isEnd() || depth == maxDepth) {
             CalculatedMove baseMove = new CalculatedMove();
             baseMove = baseMove.thisMove(minimaxState.getLastMove(), utilityFunction(minimaxState.getBoard(), counter));
-            System.out.println("final baseMoveFound:  "+ baseMove.getCol());
             return baseMove;
         } else {
             LinkedList<MinimaxState> children = minimaxState.getChildren(counter);
