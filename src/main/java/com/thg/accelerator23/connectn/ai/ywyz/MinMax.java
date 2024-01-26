@@ -33,7 +33,7 @@ public class MinMax {
             System.out.println("final baseMoveFound:  "+ baseMove.getCol());
             return baseMove;
         } else {
-            LinkedList<MinimaxState> children = minimaxState.getChildren(counter.getOther(), Collections.emptyList());
+            LinkedList<MinimaxState> children = minimaxState.getChildren(counter.getOther());
             CalculatedMove minPlayerMove = new CalculatedMove();
             minPlayerMove = minPlayerMove.moveToCompare(Integer.MAX_VALUE);
             for (int i = 0; i < children.size(); i++) {
@@ -69,9 +69,9 @@ public class MinMax {
             List<MinimaxState> children;
             if (minimaxState.isEmpty()){
                 List<Integer> integerChildren = Arrays.asList(9, 0, 1, 8, 2, 3, 7, 6, 4, 5);
-                children = minimaxState.getChildren(counter, integerChildren);
+                children = minimaxState.getChildrenFirstMove(counter, integerChildren);
             } else {
-                children = minimaxState.getChildren(counter, Collections.emptyList());
+                children = minimaxState.getChildren(counter);
             }
             CalculatedMove maxPlayerMove = new CalculatedMove();
             maxPlayerMove = maxPlayerMove.moveToCompare(Integer.MIN_VALUE) ;
