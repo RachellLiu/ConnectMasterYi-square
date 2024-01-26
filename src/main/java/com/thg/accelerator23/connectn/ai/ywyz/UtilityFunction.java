@@ -19,9 +19,11 @@ public class UtilityFunction {
         int minPlayer = 0;
         if (state.isWin()) {
             if (state.getWinner().equals(counter)) {
-                maxPlayer += 100 - depth * 20;
+//                maxPlayer += 100 - depth * 20;
+                maxPlayer += 100;
             } else {
-                minPlayer += 1000 - depth * 200;
+//                minPlayer += 1000 - depth * 200;
+                minPlayer += 100;
             }
         }
         minPlayer += check3InARow(board, counter.getOther())*10 + check2InARow(board, counter.getOther())*4;
