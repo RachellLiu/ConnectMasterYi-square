@@ -3,6 +3,7 @@ package com.thg.accelerator23.connectn.ai.ywyz;
 import com.thehutgroup.accelerator.connectn.player.Board;
 import com.thehutgroup.accelerator.connectn.player.Counter;
 import com.thehutgroup.accelerator.connectn.player.InvalidMoveException;
+import com.thehutgroup.accelerator.connectn.player.Position;
 
 import java.util.LinkedList;
 
@@ -39,5 +40,18 @@ public class MinimaxState {
 
     public int getLastMove() {
         return lastMove;
+    }
+
+    public boolean isEmpty() {
+        for (int i=0; i < board.getConfig().getWidth(); i++){
+            for (int j=0; j < board.getConfig().getHeight(); j++){
+                if (!board.hasCounterAtPosition(new Position(i, j))){
+                    continue;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
