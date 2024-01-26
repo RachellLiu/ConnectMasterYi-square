@@ -31,12 +31,12 @@ public class UtilityFunction {
 
     public static int check3InARow(Board board, Counter counter) {
         int times = 0;
-        Counter[][] array = board.getCounterPlacements();
+//        Counter[][] array = board.getCounterPlacements();
         //In column
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j, i + 2)) {
-                    if (array[i][j] == array[i+1][j] && array[i][j] == array[i+2][j] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i+1][j] && board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i+2][j] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -46,7 +46,7 @@ public class UtilityFunction {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j+2, i)) {
-                    if (array[i][j] == array[i][j+1] && array[i][j] == array[i][j+2] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i][j+1] && board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i][j+2] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -56,7 +56,7 @@ public class UtilityFunction {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j + 2, i + 2)) {
-                    if (array[i][j] == array[i + 1][j + 1] && array[i][j] == array[i + 2][j + 2] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i + 1][j + 1] && board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i + 2][j + 2] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -66,7 +66,7 @@ public class UtilityFunction {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j + 2, i - 2)) {
-                    if (array[i][j] == array[i - 1][j + 1] && array[i][j] == array[i - 2][j + 2] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i - 1][j + 1] && board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i - 2][j + 2] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -83,12 +83,12 @@ public class UtilityFunction {
 
     public static int check2InARow(Board board, Counter counter) {
         int times = 0;
-        Counter[][] array = board.getCounterPlacements();
+//        Counter[][] array = board.getCounterPlacements();
         //In a column
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j + 1, i)) {
-                    if (array[i][j] == array[i][j + 1] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i][j + 1] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -98,7 +98,7 @@ public class UtilityFunction {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j, i-1)) {
-                    if (array[i][j] == array[i - 1][j] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i - 1][j] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -108,7 +108,7 @@ public class UtilityFunction {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid(j + 1, i+1)) {
-                    if (array[i][j] == array[i + 1][j + 1] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i + 1][j + 1] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
@@ -118,7 +118,7 @@ public class UtilityFunction {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
                 if (checkValid( j + 1, i - 1)) {
-                    if (array[i][j] == array[i - 1][j + 1] && array[i][j] == counter) {
+                    if (board.getCounterPlacements()[i][j] == board.getCounterPlacements()[i - 1][j + 1] && board.getCounterPlacements()[i][j] == counter) {
                         times++;
                     }
                 }
