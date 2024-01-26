@@ -32,29 +32,29 @@ public class UtilityFunction {
     public static int check3InARow(Board board, Counter counter) {
         int times = 0;
         Counter[][] array = board.getCounterPlacements();
-        //In row
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (checkValid(i, j + 2)) {
-                    if (array[i][j] == array[i][j + 1] && array[i][j] == array[i][j + 2] && array[i][j] == counter) {
+        //In column
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (checkValid(i + 2, j)) {
+                    if (array[i][j] == array[i+1][j] && array[i][j] == array[i+2][j] && array[i][j] == counter) {
                         times++;
                     }
                 }
             }
         }
-        //In column
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (checkValid(i+2, j)) {
-                    if (array[i][j] == array[i + 1][j] && array[i][j] == array[i + 2][j] && array[i][j] == counter) {
+        //In row
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (checkValid(i, j+2)) {
+                    if (array[i][j] == array[i][j+1] && array[i][j] == array[i][j+2] && array[i][j] == counter) {
                         times++;
                     }
                 }
             }
         }
         //In diagonal ascendent
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (checkValid(i + 2, j + 2)) {
                     if (array[i][j] == array[i + 1][j + 1] && array[i][j] == array[i + 2][j + 2] && array[i][j] == counter) {
                         times++;
@@ -63,8 +63,8 @@ public class UtilityFunction {
             }
         }
         //In diagonal descendent
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (checkValid(i - 2, j + 2)) {
                     if (array[i][j] == array[i - 1][j + 1] && array[i][j] == array[i - 2][j + 2] && array[i][j] == counter) {
                         times++;
@@ -84,9 +84,9 @@ public class UtilityFunction {
     public static int check2InARow(Board board, Counter counter) {
         int times = 0;
         Counter[][] array = board.getCounterPlacements();
-        //In a row
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        //In a column
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (checkValid(i, j + 1)) {
                     if (array[i][j] == array[i][j + 1] && array[i][j] == counter) {
                         times++;
@@ -94,9 +94,9 @@ public class UtilityFunction {
                 }
             }
         }
-        //In a column
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        //In a row
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (checkValid(i - 1, j)) {
                     if (array[i][j] == array[i - 1][j] && array[i][j] == counter) {
                         times++;
@@ -105,8 +105,8 @@ public class UtilityFunction {
             }
         }
         //In a diagonal ascendent
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (checkValid(i + 1, j + 1)) {
                     if (array[i][j] == array[i + 1][j + 1] && array[i][j] == counter) {
                         times++;
@@ -115,8 +115,8 @@ public class UtilityFunction {
             }
         }
         //In a diagonal descendent
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (checkValid(i - 1, j + 1)) {
                     if (array[i][j] == array[i - 1][j + 1] && array[i][j] == counter) {
                         times++;
