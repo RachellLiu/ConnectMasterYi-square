@@ -35,7 +35,7 @@ public class UtilityFunction {
         //In column
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i + 2, j)) {
+                if (checkValid(j, i + 2)) {
                     if (array[i][j] == array[i+1][j] && array[i][j] == array[i+2][j] && array[i][j] == counter) {
                         times++;
                     }
@@ -45,7 +45,7 @@ public class UtilityFunction {
         //In row
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i, j+2)) {
+                if (checkValid(j+2, i)) {
                     if (array[i][j] == array[i][j+1] && array[i][j] == array[i][j+2] && array[i][j] == counter) {
                         times++;
                     }
@@ -55,7 +55,7 @@ public class UtilityFunction {
         //In diagonal ascendent
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i + 2, j + 2)) {
+                if (checkValid(j + 2, i + 2)) {
                     if (array[i][j] == array[i + 1][j + 1] && array[i][j] == array[i + 2][j + 2] && array[i][j] == counter) {
                         times++;
                     }
@@ -65,7 +65,7 @@ public class UtilityFunction {
         //In diagonal descendent
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i - 2, j + 2)) {
+                if (checkValid(j + 2, i - 2)) {
                     if (array[i][j] == array[i - 1][j + 1] && array[i][j] == array[i - 2][j + 2] && array[i][j] == counter) {
                         times++;
                     }
@@ -87,7 +87,7 @@ public class UtilityFunction {
         //In a column
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i, j + 1)) {
+                if (checkValid(j + 1, i)) {
                     if (array[i][j] == array[i][j + 1] && array[i][j] == counter) {
                         times++;
                     }
@@ -97,7 +97,7 @@ public class UtilityFunction {
         //In a row
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i - 1, j)) {
+                if (checkValid(j, i-1)) {
                     if (array[i][j] == array[i - 1][j] && array[i][j] == counter) {
                         times++;
                     }
@@ -107,7 +107,7 @@ public class UtilityFunction {
         //In a diagonal ascendent
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i + 1, j + 1)) {
+                if (checkValid(j + 1, i+1)) {
                     if (array[i][j] == array[i + 1][j + 1] && array[i][j] == counter) {
                         times++;
                     }
@@ -117,7 +117,7 @@ public class UtilityFunction {
         //In a diagonal descendent
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 8; j++) {
-                if (checkValid(i - 1, j + 1)) {
+                if (checkValid( j + 1, i - 1)) {
                     if (array[i][j] == array[i - 1][j + 1] && array[i][j] == counter) {
                         times++;
                     }
