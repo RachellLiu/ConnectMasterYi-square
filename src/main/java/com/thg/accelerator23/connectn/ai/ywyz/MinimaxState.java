@@ -37,26 +37,6 @@ public class MinimaxState {
         return children;
     }
 
-    public LinkedList<MinimaxState> getChildrenFirstMove(Counter counter, List<Integer> childMoves) {
-        LinkedList<MinimaxState> children = new LinkedList<>();
-        int col = 0;
-        System.out.println("Children:\n");
-        while (col < childMoves.size()) {
-            int move = childMoves.get(col);
-            try {
-                Board newBoard = new Board(board, move, counter);
-                MinimaxState child = new MinimaxState(newBoard, move, utilityValue);
-                children.add(child);
-                System.out.println(child.getLastMove());
-            } catch (InvalidMoveException e) {
-                break;
-            } finally {
-                col++;
-            }
-        }
-        return children;
-    }
-
     public Board getBoard() {
         return board;
     }

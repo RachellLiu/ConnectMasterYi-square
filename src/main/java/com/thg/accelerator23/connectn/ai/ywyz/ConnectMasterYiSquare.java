@@ -18,8 +18,6 @@ public class ConnectMasterYiSquare extends Player {
   public int makeMove(Board board) {
     //TODO: some crazy analysis
     //TODO: make sure said analysis uses less than 2G of heap and returns within 10 seconds on whichever machine is running it
-//    int randomNum = ThreadLocalRandom.current().nextInt(1, 11);
-//    return randomNum;
     MinMax ai = new MinMax(4, getCounter());
     MinimaxState thisState = new MinimaxState(board, -1,0);
     if (thisState.isEmpty()){
@@ -28,6 +26,4 @@ public class ConnectMasterYiSquare extends Player {
       return ai.decision(thisState);
     }
   }
-
-
 }
