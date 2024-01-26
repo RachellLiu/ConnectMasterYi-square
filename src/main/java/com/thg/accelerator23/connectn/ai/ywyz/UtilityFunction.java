@@ -14,15 +14,112 @@ public class UtilityFunction {
         // +4 if 2 counter in a row, -1 if 2 counter.getOther() in a row.
         BoardAnalyser boardAnalyser = new BoardAnalyser(new GameConfig(10, 8, 4));
         GameState state = boardAnalyser.calculateGameState(board);
+
         int maxPlayer = 0;
         int minPlayer = 0;
         if (state.isWin()) {
             if (state.getWinner().equals(counter)) {
                 maxPlayer += 100 - depth * 20;
             } else {
-                minPlayer += 100 - depth * 20;
+                minPlayer += 1000 - depth * 200;
             }
         }
+        minPlayer += check3InARow(board, counter.getOther())*10 + check2InARow(board, counter.getOther())*4;
+        maxPlayer += check3InARow(board, counter)*5 + check2InARow(board, counter);
         return maxPlayer - minPlayer;
+    }
+
+    public static int check3InARow(Board board, Counter counter) {
+        int times = 0;
+        Counter[][] array = board.getCounterPlacements();
+        //In row
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (array[i][j] == array[i][j + 1] && array[i][j] == array[i][j + 2] && array[i][j] == counter) {
+                    times++;
+                }
+            }
+        }
+        //In column
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (array[i][j] == array[i + 1][j] && array[i][j] == array[i + 2][j] && array[i][j] == counter) {
+                    times++;
+                }
+            }
+        }
+        //In diagonal ascendent
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (checkValid(i + 2, j + 2)) {
+                    if (array[i][j] == array[i + 1][j + 1] && array[i][j] == array[i + 2][j + 2] && array[i][j] == counter) {
+                        times++;
+                    }
+                }
+            }
+        }
+        //In diagonal descendent
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (checkValid(i - 2, j + 2)) {
+                    if (array[i][j] == array[i - 1][j + 1] && array[i][j] == array[i - 2][j + 2] && array[i][j] == counter) {
+                        times++;
+                    }
+                }
+            }
+        }
+        return times;
+    }
+    public static boolean checkValid(int row, int col) {
+        if ((row <= -1) || (col <= -1) || (row > 7) || (col > 9)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static int check2InARow(Board board, Counter counter) {
+        int times = 0;
+        Counter[][] array = board.getCounterPlacements();
+        //In a row
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
+                if (checkValid(i, j + 1)) {
+                    if (array[i][j] == array[i][j + 1] && array[i][j] == counter) {
+                        times++;
+                    }
+                }
+            }
+        }
+        //In a column
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
+                if (checkValid(i - 1, j)) {
+                    if (array[i][j] == array[i - 1][j] && array[i][j] == counter) {
+                        times++;
+                    }
+                }
+            }
+        }
+        //In a diagonal ascendent
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (checkValid(i + 1, j + 1)) {
+                    if (array[i][j] == array[i + 1][j + 1] && array[i][j] == counter) {
+                        times++;
+                    }
+                }
+            }
+        }
+        //In a diagonal descendent
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (checkValid(i - 1, j + 1)) {
+                    if (array[i][j] == array[i - 1][j + 1] && array[i][j] == counter) {
+                        times++;
+                    }
+                }
+            }
+        }
+        return times;
     }
 }
