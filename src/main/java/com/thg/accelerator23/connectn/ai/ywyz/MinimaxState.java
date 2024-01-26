@@ -3,8 +3,10 @@ package com.thg.accelerator23.connectn.ai.ywyz;
 import com.thehutgroup.accelerator.connectn.player.Board;
 import com.thehutgroup.accelerator.connectn.player.Counter;
 import com.thehutgroup.accelerator.connectn.player.InvalidMoveException;
+import com.thehutgroup.accelerator.connectn.player.Position;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class MinimaxState {
     private Board board;
@@ -16,11 +18,10 @@ public class MinimaxState {
         this.lastMove = lastMove;
         this.utilityValue = utilityValue;
     }
-    public LinkedList<MinimaxState> getChildren(Counter counter) {
+    public LinkedList<MinimaxState> getChildren(Counter counter, List<Integer> childMoves) {
         LinkedList<MinimaxState> children = new LinkedList<>();
-        int col = 0;
         System.out.println("Children:\n");
-        while (col < 10) {
+        for (int col : childMoves) {
             try {
                 Board newBoard = new Board(board, col, counter);
                 MinimaxState child = new MinimaxState(newBoard, col, utilityValue);
@@ -28,8 +29,6 @@ public class MinimaxState {
                 System.out.println(child.getLastMove());
             } catch (InvalidMoveException e) {
                 break;
-            } finally {
-                col++;
             }
         }
         return children;
@@ -41,5 +40,18 @@ public class MinimaxState {
 
     public int getLastMove() {
         return lastMove;
+    }
+
+    public boolean isEmpty() {
+        for (int i=0; i < board.getConfig().getWidth(); i++){
+            for (int j=0; j < board.getConfig().getHeight(); j++){
+                if (!board.hasCounterAtPosition(new Position(i, j))){
+                    continue;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

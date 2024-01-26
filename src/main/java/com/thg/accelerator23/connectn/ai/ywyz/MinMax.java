@@ -5,10 +5,8 @@ import com.thehutgroup.accelerator.connectn.player.GameConfig;
 import com.thg.accelerator23.connectn.ai.ywyz.analysis.BoardAnalyser;
 import com.thg.accelerator23.connectn.ai.ywyz.analysis.GameState;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.thg.accelerator23.connectn.ai.ywyz.UtilityFunction.utilityFunction;
 
@@ -35,7 +33,7 @@ public class MinMax {
             System.out.println("final baseMoveFound:  "+ baseMove.getCol());
             return baseMove;
         } else {
-            LinkedList<MinimaxState> children = minimaxState.getChildren(counter.getOther());
+            LinkedList<MinimaxState> children = minimaxState.getChildren(counter.getOther(), Collections.emptyList());
             CalculatedMove minPlayerMove = new CalculatedMove();
             minPlayerMove = minPlayerMove.moveToCompare(Integer.MAX_VALUE);
             for (int i = 0; i < children.size(); i++) {
@@ -68,7 +66,13 @@ public class MinMax {
             System.out.println("final baseMoveFound:  "+ baseMove.getCol());
             return baseMove;
         } else {
-            LinkedList<MinimaxState> children = minimaxState.getChildren(counter);
+            List<MinimaxState> children;
+            if (minimaxState.isEmpty()){
+                List<Integer> integerChildren = Arrays.asList(9, 0, 1, 8, 2, 3, 7, 6, 4, 5);
+                children = minimaxState.getChildren(counter, integerChildren);
+            } else {
+                children = minimaxState.getChildren(counter, Collections.emptyList());
+            }
             CalculatedMove maxPlayerMove = new CalculatedMove();
             maxPlayerMove = maxPlayerMove.moveToCompare(Integer.MIN_VALUE) ;
             for (int j = 0; j < children.size(); j++) {
