@@ -22,7 +22,12 @@ public class ConnectMasterYiSquare extends Player {
 //    return randomNum;
     MinMax ai = new MinMax(4, getCounter());
     MinimaxState thisState = new MinimaxState(board, -1,0);
-    return ai.decision(thisState);
+    if (thisState.isEmpty()){
+      return 5;
+    } else {
+      return ai.decision(thisState);
+    }
   }
+
 
 }
